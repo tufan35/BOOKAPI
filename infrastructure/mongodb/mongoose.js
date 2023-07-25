@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const config = require('../../config');
 
 //tests_localMongo
-const mongoURI = 'mongodb://127.0.0.1:27017/books_db';
+//const mongoURI = 'mongodb://127.0.0.1:27017/books_db';
 
 //process.env.MONGO_URL
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
