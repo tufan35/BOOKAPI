@@ -48,5 +48,6 @@ Within the "lib" directory of the project, you can access the Postman collection
 
 FOLDER STRUCTURE
 
-  ![Screenshot_1](https://github.com/tufan35/BOOKAPI/assets/34610153/d52804cf-60ad-40a9-90f5-a5d7686485a1)
+ 
 
+![Screenshot_1](https://github.com/tufan35/BOOKAPI/assets/34610153/7b2ea8b4-0d57-4c85-93f2-5a546876f9d2)
