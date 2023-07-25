@@ -45,7 +45,6 @@ You can find the source code of the project at the following GitHub repository: 
 
 Within the "lib" directory of the project, you can access the Postman collection and documentation.
 
-Please make sure to use this information to create the README file in your GitHub repository. If you need any further assistance or have more specific questions, feel free to ask!
 
 FOLDER STRUCTURE
 
