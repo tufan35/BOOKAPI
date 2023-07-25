@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  node_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node_app_container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo_db_container
+    environment:
+      MONGO_URL: "mongodb://mongo_db_container:27017/books_db"  
+
+  mongo_db_container:
+    image: mongo
+    container_name: mongo_db_container
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: pwd123
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
