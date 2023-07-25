@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "38cfd503-c876-450d-b991-5a58a1a00407",
+		"name": "Books-API",
+		"description": "Books-API \nEndpointlerinin amacı kitap bilgilerini kaydetme,silme,listeleme ve güncelleme işlemlerininin yapılması, test edilmesi için oluşturulmuştur.\n\nProjede Kullanılanlar: Bu proje clean architecture mimarisine uygun tasarlanmıştır. Projede veritabanı olarak mongoDb kullanılmıştır ve unit test eklenmiştir.\n\nLocalinde olması gerekirler\n- Mongo server\n- Nodejs\n\nPROJEYİ ÇALIŞTIRMA ADIMLARI\n\nLocal\n\nProje dosyasını localde çalıştırmak isterseniz mongoose.js içindeki mongoURI dizinini yorum satırını kaldırım ve mongooseconnect alanını değiştirin. Terminal alanında proje dizinine gelerek \"node index\" diyerek projeyi çalıştırabilirsiniz.\n\nUnit Test\n\nProjeyi localde çalıştırdığınızda terminal alanında \"npm test\" kodunu çalıştırarak test aşamasını görebilir.\n\nDocker\n\nProje docker üzerinde çalıştırılcaksa proje dizinine gelerek terminalde \"docker-compose up -d\" kodunu çalıştırabilir.\n\nProjenin kaynak kodları : https://github.com/tufan35/BOOKAPI.git\nProjedeki lib dosyanın içinde postman koleksiyonuna ve dokümantasyonuna erişebilirsiniz.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Added_Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lord of Kings\",\r\n  \"author\": {\r\n    \"name\": \"Johson Watt\",\r\n    \"country\": \"London\",\r\n    \"birthDate\": \"1986-03-15\"\r\n  },\r\n  \"price\": 25.841,\r\n  \"isbn\": \"654163546\",\r\n  \"language\": \"English\",\r\n  \"numberOfPages\": 321,\r\n  \"publisher\": \"Elsevier Publisher\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localed_uri}}/api/books",
+					"host": [
+						"{{localed_uri}}"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				},
+				"description": "Kitap ekleme endpointidir. Eklencek olan kitaplar hakkında bilgileri eklemektedir.\n\nKitap Özellikleri\ntittle   : Kitap Adı\nprice    : fiyatı\nisbn     : uluslararası kitap numarası\nlanguage  : Kitabın dili\nnumberofPages : Sayfa sayısı\npublisher : yayınevi\n\nYazar Özellikleri\nname : Yazar Adı\ncountry : Ülkesi\nbirthDate : Doğduğu zaman"
+			},
+			"response": [
+				{
+					"name": "Added_Book",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Lord of Kings\",\r\n  \"author\": {\r\n    \"name\": \"Johson Watt\",\r\n    \"country\": \"London\",\r\n    \"birthDate\": \"1986-03-15\"\r\n  },\r\n  \"price\": 25.841,\r\n  \"isbn\": \"654163546\",\r\n  \"language\": \"English\",\r\n  \"numberOfPages\": 321,\r\n  \"publisher\": \"Elsevier Publisher\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localed_uri}}/api/books",
+							"host": [
+								"{{localed_uri}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "345"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"159-+SawQkyx3lnp6UUMKe+UoTmNACw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Jul 2023 07:53:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"title\": \"Lord of Kings\",\n        \"author\": {\n            \"name\": \"Johson Watt\",\n            \"country\": \"London\",\n            \"birthDate\": \"1986-03-15T00:00:00.000Z\",\n            \"_id\": \"64bf7f61c57ed367f03c8592\"\n        },\n        \"price\": 25.841,\n        \"isbn\": \"654163546\",\n        \"language\": \"English\",\n        \"numberOfPages\": 321,\n        \"publisher\": \"Elsevier Publisher\",\n        \"_id\": \"64bf7f61c57ed367f03c8591\",\n        \"__v\": 0\n    },\n    \"message\": \"Book created successfully.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Updated_Book",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "64bd8f86397040459f233688",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lord of Kings\",\r\n  \"author\": {\r\n    \"name\": \"Johson Watt\",\r\n    \"country\": \"London\",\r\n    \"birthDate\": \"1986-03-15\"\r\n  },\r\n  \"price\": 35.482,\r\n  \"isbn\": \"654163546\",\r\n  \"language\": \"English\",\r\n  \"numberOfPages\": 321,\r\n  \"publisher\": \"Elsevier Publisher\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localed_uri}}/api/books/64bf7f61c57ed367f03c8591",
+					"host": [
+						"{{localed_uri}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"64bf7f61c57ed367f03c8591"
+					],
+					"query": [
+						{
+							"key": "64bd8f86397040459f233688",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Eklenmiş olan kitabın bilgilerini güncelleyecek olan endpointtir."
+			},
+			"response": [
+				{
+					"name": "Updated_Book",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "64bd8f86397040459f233688",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Lord of Kings\",\r\n  \"author\": {\r\n    \"name\": \"Johson Watt\",\r\n    \"country\": \"London\",\r\n    \"birthDate\": \"1986-03-15\"\r\n  },\r\n  \"price\": 35.482,\r\n  \"isbn\": \"654163546\",\r\n  \"language\": \"English\",\r\n  \"numberOfPages\": 321,\r\n  \"publisher\": \"Elsevier Publisher\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localed_uri}}/api/books/64bf7f61c57ed367f03c8591",
+							"host": [
+								"{{localed_uri}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"64bf7f61c57ed367f03c8591"
+							],
+							"query": [
+								{
+									"key": "64bd8f86397040459f233688",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "345"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"159-9HmhastDnaWsTtDbstgWfzV8Cg4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Jul 2023 07:54:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"_id\": \"64bf7f61c57ed367f03c8591\",\n        \"title\": \"Lord of Kings\",\n        \"author\": {\n            \"name\": \"Johson Watt\",\n            \"country\": \"London\",\n            \"birthDate\": \"1986-03-15T00:00:00.000Z\",\n            \"_id\": \"64bf7fbbc57ed367f03c8595\"\n        },\n        \"price\": 35.482,\n        \"isbn\": \"654163546\",\n        \"language\": \"English\",\n        \"numberOfPages\": 321,\n        \"publisher\": \"Elsevier Publisher\",\n        \"__v\": 0\n    },\n    \"message\": \"Book updated successfully.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get_Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localed_uri}}/api/books",
+					"host": [
+						"{{localed_uri}}"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				},
+				"description": "Veritabanına eklenmiş olan bütün kitapları listeleyen endpointtir."
+			},
+			"response": [
+				{
+					"name": "Get_Books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localed_uri}}/api/books",
+							"host": [
+								"{{localed_uri}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "299"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12b-nHu0HDyXKraiYkTE9Gt9s8sDeYk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Jul 2023 07:54:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"64bf7f61c57ed367f03c8591\",\n        \"title\": \"Lord of Kings\",\n        \"author\": {\n            \"name\": \"Johson Watt\",\n            \"country\": \"London\",\n            \"birthDate\": \"1986-03-15T00:00:00.000Z\",\n            \"_id\": \"64bf7fbbc57ed367f03c8595\"\n        },\n        \"price\": 35.482,\n        \"isbn\": \"654163546\",\n        \"language\": \"English\",\n        \"numberOfPages\": 321,\n        \"publisher\": \"Elsevier Publisher\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Deleted_Id_Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{localed_uri}}/api/books/64bf7f61c57ed367f03c8591",
+					"host": [
+						"{{localed_uri}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"64bf7f61c57ed367f03c8591"
+					]
+				},
+				"description": "Veritabanına eklenmiş olan kitabın id numarası baz alınarak silme işlemi yapan endpointtir."
+			},
+			"response": [
+				{
+					"name": "Deleted_Id_Book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localed_uri}}/api/books/64bf7f61c57ed367f03c8591",
+							"host": [
+								"{{localed_uri}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"64bf7f61c57ed367f03c8591"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "345"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"159-hsv7MxqGHyqyI7w423Yfo4sQhwI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Jul 2023 07:54:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"_id\": \"64bf7f61c57ed367f03c8591\",\n        \"title\": \"Lord of Kings\",\n        \"author\": {\n            \"name\": \"Johson Watt\",\n            \"country\": \"London\",\n            \"birthDate\": \"1986-03-15T00:00:00.000Z\",\n            \"_id\": \"64bf7fbbc57ed367f03c8595\"\n        },\n        \"price\": 35.482,\n        \"isbn\": \"654163546\",\n        \"language\": \"English\",\n        \"numberOfPages\": 321,\n        \"publisher\": \"Elsevier Publisher\",\n        \"__v\": 0\n    },\n    \"message\": \"Book deleted successfully.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localed_uri",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}
